@@ -8,6 +8,8 @@ import TransparentHeader from "../../../components/layout/transparent-header/tra
 import HideDefaultHeader from "../../../components/layout/transparent-header/hide-default-header"
 import ImageWithTextSection from "../../../components/layout/image-text-section"
 import { BenefitData, faqData, KeyfeaturesData, whyChooseData } from "../../../assets/data"
+import AboveFooterSection from "../../../components/home/AboveFooterSection"
+import Footer from "../../../components/home/Footer"
 
 const sectionsData = [
     {
@@ -114,6 +116,8 @@ const Page = () => {
                 }}
             />
             <CTA />
+            <AboveFooterSection />
+            <Footer />
         </>
     )
 }
