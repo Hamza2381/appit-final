@@ -26,7 +26,7 @@ const jost = Jost({
 })
 
 export const metadata = {
-  metadataBase: new URL('https://appitsoftware.com'),
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
   title: {
     default: 'AppitSoftware - Leading Software Development Company',
     template: '%s | AppitSoftware'
@@ -60,7 +60,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://appitsoftware.com',
+    url: '/',
     siteName: 'AppitSoftware',
     title: 'AppitSoftware - Leading Software Development Company',
     description: 'Transform your digital vision with innovative software solutions. Web development, mobile apps, and enterprise solutions that drive business growth.',
@@ -85,7 +85,7 @@ export const metadata = {
     google: 'your-google-verification-code',
   },
   alternates: {
-    canonical: 'https://appitsoftware.com',
+    canonical: '/',
   },
   icons: {
     icon: [
@@ -110,8 +110,8 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "AppitSoftware",
               "description": "Leading software development company specializing in web applications, mobile apps, and enterprise solutions.",
-              "url": "https://appitsoftware.com",
-              "logo": "https://appitsoftware.com/logo.png",
+              "url": "/",
+              "logo": "/logo.png",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+1-555-123-4567",
