@@ -1,19 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/career-search/page": "app/career-search/page.js",
-  "/career-apply/page": "app/career-apply/page.js",
+  "/blog/page": "app/blog/page.js",
   "/about/page": "app/about/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/platform/page": "app/platform/page.js",
-  "/career/page": "app/career/page.js",
-  "/services/page": "app/services/page.js",
-  "/partnership/page": "app/partnership/page.js",
   "/page": "app/page.js",
-  "/products/page": "app/products/page.js",
-  "/products/ai-lawyers/page": "app/products/ai-lawyers/page.js",
   "/team/page": "app/team/page.js",
-  "/services/oracle-ai/page": "app/services/oracle-ai/page.js",
-  "/industry/page": "app/industry/page.js",
-  "/blogdetails/page": "app/blogdetails/page.js",
-  "/blog/page": "app/blog/page.js"
+  "/partnership/page": "app/partnership/page.js"
 }

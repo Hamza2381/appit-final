@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function WhatWeDoDropdown({ isOpen, onClose, isMobile = false }) {
+export default function WhatWeDoDropdown({ isOpen, onClose, isMobile = false, onMobileMenuClose }) {
   const [activeTab, setActiveTab] = useState('Services');
   const [animationState, setAnimationState] = useState(isOpen ? 'open' : 'closed');
   
@@ -94,7 +94,11 @@ export default function WhatWeDoDropdown({ isOpen, onClose, isMobile = false }) 
         sessionStorage.setItem('isWhatWeDoOpen', 'false');
       }
     }
-  }, [onClose]);
+    // Close mobile menu if available
+    if (isMobile && onMobileMenuClose) {
+      onMobileMenuClose();
+    }
+  }, [onClose, isMobile, onMobileMenuClose]);
 
   // Define the right arrow icon for navigation
   const rightArrow = (
@@ -322,17 +326,7 @@ export default function WhatWeDoDropdown({ isOpen, onClose, isMobile = false }) 
                 <ItemComponent 
                   key={index}
                   {...itemProps}
-                  onClick={(e) => {
-                    // For navigation links, ensure the dropdown is closed
-                    if (onClose) {
-                      onClose();
-                      // Reset the dropdown state in sessionStorage
-                      if (typeof window !== 'undefined') {
-                        sessionStorage.setItem('isWhatWeDoOpen', 'false');
-                      }
-                    }
-                    handleItemClick(e);
-                  }}
+                  onClick={handleItemClick}
                   className="flex items-center gap-3 p-2 rounded transition-all duration-300 group hover:bg-[#F0F8FF]"
                   style={{
                     transitionDelay: `${index * 30}ms`,

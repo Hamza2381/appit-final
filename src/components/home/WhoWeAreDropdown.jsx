@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function WhoWeAreDropdown({ isOpen, onClose, isMobile = false }) {
+export default function WhoWeAreDropdown({ isOpen, onClose, isMobile = false, onMobileMenuClose }) {
   const [activeTab, setActiveTab] = useState('About Us');
   const [animationState, setAnimationState] = useState(isOpen ? 'open' : 'closed');
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
@@ -104,11 +104,15 @@ export default function WhoWeAreDropdown({ isOpen, onClose, isMobile = false }) 
   // Handle click on service item
   const handleItemClick = useCallback((e) => {
     if (e) e.stopPropagation();
-    // Only close dropdown if we're in desktop mode
-    if (!isMobile && onClose) {
+    // Close dropdown on both mobile and desktop
+    if (onClose) {
       onClose();
     }
-  }, [isMobile, onClose]);
+    // Close mobile menu if available
+    if (isMobile && onMobileMenuClose) {
+      onMobileMenuClose();
+    }
+  }, [isMobile, onClose, onMobileMenuClose]);
 
   // Define the right arrow icon for navigation
   const rightArrow = (
@@ -135,10 +139,7 @@ export default function WhoWeAreDropdown({ isOpen, onClose, isMobile = false }) 
     <Link 
       href={link}
       prefetch={true}
-      onClick={(e) => {
-        if (isMobile) e.preventDefault();
-        handleItemClick(e);
-      }}
+      onClick={handleItemClick}
       className={`group inline-flex px-4 py-2.5 items-center ${getButtonSize()} rounded-[32px] bg-[#0066B3] text-white transition-all duration-300 hover:bg-[#A50F15]`}
     >
       <span className="font-medium">{text}</span>

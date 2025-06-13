@@ -322,6 +322,7 @@ export default function Header() {
                   isOpen={isClient && isWhoWeAreOpen} 
                   onClose={closeWhoWeAre}
                   isMobile={true}
+                  onMobileMenuClose={closeMenu}
                 />
               </div>
             )}
@@ -348,6 +349,7 @@ export default function Header() {
                   isOpen={isClient && isWhatWeDoOpen} 
                   onClose={closeWhatWeDo}
                   isMobile={true}
+                  onMobileMenuClose={closeMenu}
                 />
               </div>
             )}
